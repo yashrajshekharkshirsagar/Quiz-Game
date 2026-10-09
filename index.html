@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CodeQuiz - Programming Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <!-- LOGIN SCREEN -->
+    <section id="login-screen" class="screen">
+      <div class="auth-card">
+        <div class="logo">Code<span>Quiz</span></div>
+        <h1>Welcome back</h1>
+        <p class="muted">Log in to practise programming.</p>
+        <form id="login-form">
+          <label for="login-email">Email</label>
+          <input id="login-email" type="email" autocomplete="email" required>
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" autocomplete="current-password" required>
+          <button class="primary full" type="submit">Log In</button>
+          <p id="login-error" class="error" role="alert"></p>
+        </form>
+        <p class="switch-text">New here? <button class="text-button" type="button" 
+          onclick="showSignup()">Create an account</button></p>
+      </div>
+    </section>
+    <!-- SIGNUP SCREEN -->
+    <section id="signup-screen" class="screen hidden">
+      <div class="auth-card">
+        <div class="logo">Code<span>Quiz</span></div>
+        <h1>Create account</h1>
+        <p class="muted">Make a demo account for this browser.</p>
+        <form id="signup-form">
+          <label for="signup-name">Your name</label>
+          <input id="signup-name" type="text" autocomplete="name" maxlength="60" required>
+          <label for="signup-email">Email</label>
+          <input id="signup-email" type="email" autocomplete="email" required>
+          <label for="signup-password">Password (at least 6 characters)</label>
+          <input id="signup-password" type="password" autocomplete="new-password" minlength="6" 
+            required>
+          <label for="signup-confirm">Confirm password</label>
+          <input id="signup-confirm" type="password" autocomplete="new-password" minlength="6" 
+            required>
+          <button class="primary full" type="submit">Sign Up</button>
+          <p id="signup-error" class="error" role="alert"></p>
+        </form>
+        <p class="switch-text">Already registered? <button class="text-button" type="button" 
+          onclick="showLogin()">Log in</button></p>
+      </div>
+    </section>
+    <!-- LANGUAGE HOME -->
+    <section id="home-screen" class="screen hidden">
+      <header class="topbar">
+        <div class="logo">Code<span>Quiz</span></div>
+        <div class="user-actions"><span id="username-display"></span><button class="secondary 
+          small" onclick="logout()">Log Out</button></div>
+      </header>
+      <div class="hero">
+        <p class="eyebrow">LEARN • PRACTISE • IMPROVE</p>
+        <h1>Choose your language</h1>
+        <p class="muted">Select a topic and test your knowledge.</p>
+      </div>
+      <div class="language-grid">
+        <button class="language-card" onclick="startQuiz('C')"><span 
+          class="language-icon">C</span><strong>C Programming</strong><small>10 
+          questions</small></button>
+        <button class="language-card" onclick="startQuiz('C++')"><span 
+          class="language-icon">C++</span><strong>C++</strong><small>10 
+          questions</small></button>
+        <button class="language-card" onclick="startQuiz('Python')"><span 
+          class="language-icon">Py</span><strong>Python</strong><small>10 
+          questions</small></button>
+        <button class="language-card" onclick="startQuiz('Java')"><span 
+          class="language-icon">Java</span><strong>Java</strong><small>10 
+          questions</small></button>
+        <button class="language-card" onclick="startQuiz('HTML')"><span 
+          class="language-icon">5</span><strong>HTML</strong><small>10 
+          questions</small></button>
+        <button class="language-card" onclick="startQuiz('CSS')"><span 
+          class="language-icon">#</span><strong>CSS</strong><small>10 questions</small></button>
+        <button class="language-card" onclick="startQuiz('JavaScript')"><span 
+          class="language-icon">JS</span><strong>JavaScript</strong><small>10 
+          questions</small></button>
+            </div>
+      <p class="footer-note">Choose a language to begin your quiz.</p>
+    </section>
+    <!-- QUIZ SCREEN -->
+    <section id="quiz-screen" class="screen hidden">
+      <header class="topbar">
+        <div class="logo">Code<span>Quiz</span></div>
+        <button class="secondary small" onclick="goHome()">Change language</button>
+      </header>
+      <div class="quiz-card">
+        <div class="quiz-meta"><span id="language-title">Language</span><span 
+          id="question-number">Question 1 of 10</span><span id="score-display">Score: 
+          0</span></div>
+        <div class="progress-track"><div id="progress-bar"></div></div>
+        <p id="category" class="eyebrow"></p>
+        <h1 id="question">Question appears here</h1>
+        <div id="options" class="options"></div>
+        <p id="feedback" class="feedback" aria-live="polite"></p>
+        <button id="next-button" class="primary full" onclick="nextQuestion()" disabled>Next 
+          Question</button>
+      </div>
+    </section>
+    <!-- RESULT SCREEN -->
+    <section id="result-screen" class="screen hidden">
+      <div class="result-card">
+        <div class="result-mark">3</div>
+        <p class="eyebrow">QUIZ COMPLETED</p>
+        <h1>Great work!</h1>
+        <p id="result-message" class="muted"></p>
+        <div class="result-score"><span id="final-score">0 / 10</span><small>Correct 
+          answers</small></div>
+        <div class="result-stats">
+          <div><strong id="correct-count">0</strong><span>Correct</span></div>
+          <div><strong id="wrong-count">0</strong><span>Incorrect</span></div>
+        </div>
+        <button class="primary full" onclick="playAgain()">Play Again</button>
+        <button class="secondary full" onclick="goHome()">Choose Another Language</button>
+        <button class="text-button" onclick="logout()">Log Out</button>
+      </div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
